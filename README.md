@@ -1,2 +1,2 @@
 # life
-is happy
+is beautiful and happy
