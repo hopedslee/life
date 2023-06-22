@@ -16,12 +16,11 @@ header("Content-Type:text/html;charset=utf-8");
 require('db.php');
 
 date_default_timezone_set('Asia/Seoul');
-//$iot= file_get_contents('http://dsrobotec.iptime.org:8080');
 //$iot= file_get_contents('http://192.168.0.91:8081');
 echo "<table border='1'>";
 echo "<tr style='color:gray;'><th>" . date('Y-m-d H:i:s') ."&nbsp&nbsp(" . gethostname() . ")</th></tr>";
 
-$mentFile = "../fx/wisesaying.txt";
+$mentFile = "wisesaying.txt";
 $fp = fopen($mentFile, "r");
 while(!feof($fp)) $ment[] = fgets($fp, 1024);
 $key = array_rand($ment);
@@ -40,6 +39,7 @@ while( $row = mysqli_fetch_array($result) )
     }
 
 }
+echo "</table>";
 
 if (!empty($_GET['from'])) {
     $from=$_GET['from'];
@@ -200,37 +200,9 @@ echo "<table>";
 echo "<td align=right style='font-size: 10px;'>";
 echo "<form action='myevents.php?from=".$from."&count=".$count."&keyword='><input type='text' name='keyword' value='검색어'/><input type='submit'/></form></td>";
 echo "</table>";
-/*
-$query="SELECT * from myasset order by date asc";
-$result=mysqli_query($conn,$query) or die(mysqli_error());
-echo "<table style='width: 40%' border='1'>";
-echo "<colgroup>
-       <col span='1' style='width: 20%;'>
-       <col span='1' style='width: 20%;'>
-       <col span='1' style='width: 20%;'>
-       <col span='1' style='width: 20%;'>
-       <col span='1' style='width: 20%;'>
-    </colgroup>";
 
-echo "<tr align='center'><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>1600027157</td><td>633124</td><td>60013206</td><td>CFDsum</td>";
-echo "<td>우체국</td><td>카카오</td><td>CASH</td><td>SUM</td><td>TSUM</td><td>ALLGAIN</td><td>GAINkrw</td></tr>";
-while( $row = mysqli_fetch_array($result) )
-{
-    //echo $row['date'] . " , " . $row['cfd'] . "<br>";
-    $krwsum=$row['postbank']+$row['kakaobank']+$row['cash'];
-    $tkrwsum=$krwsum+($row['cfd']*1100);
-    echo "<tr align='right'><td>".$row['date']."</td><td>$".number_format($row['cfd'],0)."</td><td>".number_format($row['cfd2'],0)."</td><td>".number_format($row['cfd3'],0)."</td><td>";
-    echo number_format($row['cfd']+$row['cfd2']+$row['cfd3'],0)."</td><td>";
-    echo number_format($row['postbank'],0)."</td><td>".number_format($row['kakaobank'],0)."</td><td>".number_format($row['cash'],0)."</td>";
-    echo "<td>".number_format($krwsum,0)."</td><td>".number_format($tkrwsum,0)."</td><td>";
-    echo number_format($row['cfdallgain'],0)."</td><td>".number_format($row['cfdallgain']*1100/4,0)."</td></tr>";
-}
-
-echo "</table>";
-*/
 mysqli_close($con_suwon);
 
 ?>
-<!--    <a href="myevents.php?num=100">Show more</a> -->
 </p>
 </html>
