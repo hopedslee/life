@@ -15,3 +15,5 @@ VALUES ('$date','$type','$contents','',null,null,'','')";
 $result = mysqli_query($conn,$query);
 echo $query . "<br />";
 echo "Return : " . $result ."<br />";
+
+?>
