@@ -1,0 +1,17 @@
+<?php
+/*
+Author: Javed Ur Rehman
+Website: http://www.allphptricks.com/
+*/
+$host="localhost:3306";
+$dbname="dslee_db";
+$dbuser="dslee";
+$dbpasswd="A2lds7707!";
+//-------------------------------------------------
+$conn = mysqli_connect($host,$dbuser,$dbpasswd,$dbname);
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+?>

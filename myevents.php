@@ -1,7 +1,6 @@
-
 <HTML>
 <HEAD>
-<title>MyEvents php7.4</title>
+<title>MyEvents php7.4 2023-06-21</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- 
 <iframe width="280" height="157" src="https://www.youtube.com/embed/YCEPIJJoo9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

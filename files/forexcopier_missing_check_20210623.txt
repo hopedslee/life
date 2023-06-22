@@ -1,0 +1,10 @@
+Hello,
+I purchased the Forex Copier 2 and Forex Copier 3. I'm now running Forex copier 2 for multiple live accounts and also testing Copier 3.
+
+I had an some accident for running FX accounts.
+I run 1 Sender in master account and 12 Receivers on 12 accounts. The problem was 1 account missed Receiver EA 15 days ago, I didn't find it. Today while I add more account as a receiver through 'Apply', the old orders (that did not closed because Receiver is missing) are closed simultaneously after Forex Copier Manager 'apply'. Then old ordes caused much money loss. 
+Then I may ask your favor...
+"Is there any way to check  if the specified EA (Sender or Receiver) is running in Another chart ?"
+
+Please kindly help me, Best Regards,
+Dongsoo Lee

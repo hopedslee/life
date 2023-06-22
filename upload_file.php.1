@@ -1,0 +1,22 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+<?php
+//require ('dbconn.php');
+//mysqli_set_charset($conn,'utf8');
+
+$allowedExts = array("gif", "jpeg", "jpg", "png", "txt", );
+
+$seqno=$_GET['seqno'];
+$filename=$_GET['filename'];
+echo $seqno .  " : "; 
+echo $filename;
+echo "<br />";
+
+echo "filename=".$filename."<br />";
+echo "seqno=".$seqno."<br />";
+?>
+</body>
+<br />
+<input align="center" type=button onClick="self.close();" value="Close this window">
+</html> 

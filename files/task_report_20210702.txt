@@ -1,0 +1,36 @@
+2021.06.30~07.02 Task done
+1. TradeMonitor ForexTrade Copier 2 미작동 여부 검지 시스템 가동 
+2. 계좌별 입금/출금 상황 Trade Monitor 에 추가
+
+영향받는 시스템 
+서버 측 
+DB table 'ea_heartbeat' 구조에 depwit (varchar 100), flagtype(varchar), flagprice(float) 필드 추가 
+
+/fx/heartbeat.php 수정 (클라이언트로 부터 buylimit  price 필드 데이터 받아 DB 업데이트)
+
+/fx/depwit.php 추가 (
+
+/fx/reader.php 조회 프로그램 수정
+
+DSR_1-01 Experts 폴더의 Copy_Reporter.bat 프로그램 갱신하고, EA, Script 폴더의 Garbagy 
+프로그램 제거 DOS 커맨드 셋 추가
+
+클라이언트 측
+Reporter.mq4 수정 - OnTimer (30초) 에 Forex Copier 2 작동, 입금/인출 상황 갱신
+루틴 추가
+
+추가 요구 사항
+각 서버별로 Reporter.mq4 복사하는 작업 원격에서 on stop 으로 ...
+각 서버별 MT별 Refresh 하는 작업을 원격에서 on stop 으로 ... 자동화
+
+향후 방향 
+원격 드레이드 관리 시스템에서 서버별, 계좌별 제어하는 프로토콜 설계중
+- 목적 :  전략 포트폴리오, 실수 없는 계좌 관리 등
+
+7월5일주 설계 및 설계안 검증 완성
+* 7월5일주 White Label 운영시 예상되는 케이스 정리
+
+7월12일주 구현 및 적용
+
+ 
+
