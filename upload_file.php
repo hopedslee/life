@@ -39,13 +39,13 @@ if (isset($_FILES)) {
                 	echo "<br />" . $fname . " already exists. ";
            	}
            	else {
-				//$filename = mb_convert_encoding($filename, "ISO-8859-1", "UTF-8");
 				echo "<br />"."converted filename : ".$fname."<br />";
-				//move_uploaded_file($tmp_filename, $path.$fname);
 				$ret = move_uploaded_file($tmp_name, $path.$fname);
-				echo "move_uploaded_file - from : " . $tmp_name . " to : " . $path.$fname . " ret : " . $ret . "<br />";
+				echo "move_uploaded_file:<br />";
+				echo "from : " . $tmp_name . "<br />";
+				echo "  to : " . $path.$fname . "<br />";
+				echo " ret : " . $ret . "<br />";
 				//copy($path.$filename, $tmppath.$fname);
-				$cwd = getcwd();
 				$filelocation = $path.$fname;
 				echo "Stored permanently in : " . $filelocation;
 			}	
