@@ -8,7 +8,7 @@ $from=$_GET['from'];
 $count=$_GET['count'];
 
 echo $seqno."<br />";
-$path = "D:/DATA/htdocs/life/files/";
+$path = "files/";
 
 $query = "SELECT contents, filename FROM myevents WHERE seqno='$seqno'"; 
 $result = mysqli_query($con_suwon,$query) or die ( mysqli_error());

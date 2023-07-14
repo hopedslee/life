@@ -32,6 +32,7 @@ if (!empty($_POST["file"])) $file=$_POST["file"];
 else $file=NULL;
 
 //-- 추가하기
+$contents = addslashes($contents);
 $query = "INSERT INTO myevents (date,type,contents,paymethod,price,volume,remark,market) 
 VALUES ('$date','$type','$contents','$paymethod','$price','$volume','$remark','$market')";
 $result = mysqli_query($con_suwon,$query);

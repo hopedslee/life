@@ -33,6 +33,7 @@ if (!empty($_POST["filename"])) $filename=$_POST["filename"];
 else $filename=NULL;
 
 //-- 저장하기
+$contents = addslashes($contents);
 $query = "UPDATE myevents SET date='$date', type='$type', contents='$contents', paymethod='$paymethod', price=$price, volume=$volume, remark='$remark', market='$market', filename='$filename' WHERE seqno='$seqno'";
 $result = mysqli_query($con_suwon,$query);
 echo $query . "<br />";

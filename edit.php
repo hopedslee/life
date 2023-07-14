@@ -56,7 +56,7 @@ else $file=NULL;
 $query="SELECT * FROM myevents WHERE seqno=$seqno";
 $ret=mysqli_query($con_suwon,$query);
 $row=mysqli_fetch_array($ret);
-$contents=$row['contents'];
+$contents = $row['contents'];
 $type=$row['type'];
 $paymethod=$row['paymethod'];
 $path = "files/" . $row['filename'];
