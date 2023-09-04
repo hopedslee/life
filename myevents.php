@@ -1,13 +1,13 @@
 
 <HTML>
 <HEAD>
-<title>MyEvents php7.4 2023-06-21</title>
+<title>MyEvents Gabia 2023-09-04</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- 
 <iframe width="280" height="157" src="https://www.youtube.com/embed/YCEPIJJoo9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 -->
-<!-- <img width="450" height="157" src="../fx/images/header-<?php $random = rand(1,89); echo $random; ?>.jpg">
--->
+<img width="450" height="157" src="../fx/images/header-<?php $random = rand(1,89); echo $random; ?>.jpg">
+
 </HEAD>
 <body bgcolor='black'> </body>
 <SCRIPT>
@@ -28,7 +28,7 @@ $key = array_rand($ment);
 echo "<tr style='color:gray;'><th>" . $text_this=$ment[$key] . "</th></tr>";
 
 $query="SELECT * from issues";
-$result=mysqli_query($con_suwon,$query) or die(mysqli_error());
+$result=mysqli_query($conn,$query) or die(mysqli_error());
 
 $dom=date('j');
 while( $row = mysqli_fetch_array($result) )
@@ -61,7 +61,7 @@ else {
     $query="SELECT * from myevents order by date desc, seqno desc limit ".$from.", ".$count;
 }
 
-$result=mysqli_query($con_suwon,$query) or die(mysqli_error());
+$result=mysqli_query($conn,$query) or die(mysqli_error());
 
 //$from = $from + $count;
 $prev_from = $from - ($count*2);
@@ -202,7 +202,7 @@ echo "<td align=right style='font-size: 10px;'>";
 echo "<form action='myevents.php?from=".$from."&count=".$count."&keyword='><input type='text' name='keyword' value='검색어'/><input type='submit'/></form></td>";
 echo "</table>";
 
-mysqli_close($con_suwon);
+mysqli_close($conn);
 
 ?>
 </p>

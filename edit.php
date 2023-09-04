@@ -26,6 +26,7 @@ echo "<h1>[".$pageName."1.02]</h1>";
 $seqno=$_GET['seqno'];
 
 require ('db.php');
+
 if (!empty($_POST["date"])) $date=$_POST["date"];
 else $date=date("Y-m-d");
 
@@ -54,7 +55,7 @@ if (!empty($_POST["file"])) $file=$_POST["file"];
 else $file=NULL;
 
 $query="SELECT * FROM myevents WHERE seqno=$seqno";
-$ret=mysqli_query($con_suwon,$query);
+$ret=mysqli_query($conn,$query);
 $row=mysqli_fetch_array($ret);
 $contents = $row['contents'];
 $type=$row['type'];

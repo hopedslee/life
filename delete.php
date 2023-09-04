@@ -11,7 +11,7 @@ echo $seqno."<br />";
 $path = "files/";
 
 $query = "SELECT contents, filename FROM myevents WHERE seqno='$seqno'"; 
-$result = mysqli_query($con_suwon,$query) or die ( mysqli_error());
+$result = mysqli_query($conn,$query) or die ( mysqli_error());
 
 if($result == True) {
 	$row = mysqli_fetch_array($result);
@@ -24,7 +24,7 @@ if($result == True) {
 	}
 
 	$query = "DELETE FROM myevents WHERE seqno='$seqno'"; 
-	$result = mysqli_query($con_suwon,$query) or die ( mysqli_error());
+	$result = mysqli_query($conn,$query) or die ( mysqli_error());
 	if($result) {
 		echo $seqno . ", '" . substr($contents, 0, 20) . " ...' is deleted from table.<br />";
 	}

@@ -1,7 +1,7 @@
 <html>
 <?php
 require ('db.php');
-mysqli_set_charset($con_suwon,'utf8');
+mysqli_set_charset($conn,'utf8');
 
 $seqno=$_POST['seqno'];
 
@@ -35,7 +35,7 @@ else $filename=NULL;
 //-- 저장하기
 $contents = addslashes($contents);
 $query = "UPDATE myevents SET date='$date', type='$type', contents='$contents', paymethod='$paymethod', price=$price, volume=$volume, remark='$remark', market='$market', filename='$filename' WHERE seqno='$seqno'";
-$result = mysqli_query($con_suwon,$query);
+$result = mysqli_query($conn,$query);
 echo $query . "<br />";
 echo "Return : " . $result ."<br />";
 /*

@@ -2,7 +2,7 @@
 
 require ('db.php');
 
-mysqli_set_charset($con_suwon,'utf8');
+mysqli_set_charset($conn,'utf8');
 
 if (!empty($_POST["date"])) $date=$_POST["date"];
 else $date=date("Y-m-d");
@@ -35,7 +35,7 @@ else $file=NULL;
 $contents = addslashes($contents);
 $query = "INSERT INTO myevents (date,type,contents,paymethod,price,volume,remark,market) 
 VALUES ('$date','$type','$contents','$paymethod','$price','$volume','$remark','$market')";
-$result = mysqli_query($con_suwon,$query);
+$result = mysqli_query($conn,$query);
 echo $query . "<br />";
 echo "Return : " . $result ."<br />";
 /*

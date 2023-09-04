@@ -28,11 +28,11 @@ h1 {
 <body>
 <?php
 require('db.php');
-mysqli_set_charset($con,'utf8');
+mysqli_set_charset($conn,'utf8');
 
 $query = "SELECT * from myevents where seqno='".$seqno."'"; 
 
-$result = mysqli_query($con_suwon, $query) or die ( mysqli_error());
+$result = mysqli_query($conn, $query) or die ( mysqli_error());
 if(!$result) echo $query."<br />";
 
 $row = mysqli_fetch_array($result);

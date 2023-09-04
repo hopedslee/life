@@ -3,7 +3,7 @@
 <body>
 <?php
 require ('db.php');
-mysqli_set_charset($con_suwon,'utf8');
+mysqli_set_charset($conn,'utf8');
 
 $allowedExts = array("gif", "jpeg", "jpg", "png", "txt", );
 
@@ -57,7 +57,7 @@ if (isset($_FILES)) {
     }
 
     $query = "UPDATE myevents SET filename='$fname' WHERE seqno='$seqno'";
-    $result = mysqli_query($con_suwon,$query);
+    $result = mysqli_query($conn,$query);
     echo "<br />".$query . "<br />";
     echo "Return : " . $result ."<br />";
 }
