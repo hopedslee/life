@@ -11,6 +11,7 @@
 </HEAD>
 <body bgcolor='black'> </body>
 <SCRIPT>
+
 </SCRIPT>
 <?php
 header("Content-Type:text/html;charset=utf-8");
@@ -77,7 +78,7 @@ echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$pre
 echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$from."&count=".$count."'>Next Page</a></td>";
 //echo "<td align=right style='font-size: 10px;'>";
 //echo "<form action='myevents.php?from=".$from."&count=".$count."&keyword='><input type='text' name='keyword' value='검색어'/><input type='submit'/></form></td>";
-echo "<td align=center colspan=6><input type=button style='width: 50px' onClick=window.open('new.php','aaa','width=500,height=700,toolbar=1,status=1,'); value='追加'></td></tr>";
+echo "<td align=center colspan=6><input type=button style='width: 50px' onClick=window.open('new.php','_self','width=500,height=700,toolbar=1,status=1,'); value='追加'></td></tr>";
 echo "<colgroup>";
 echo "<col style='width:1%;'>";
 echo "<col style='width:1%;'>";
@@ -195,7 +196,7 @@ echo "<tr><td align=right style='font-size: 10px;'><a href='myevents.php?from=0&
 echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$prev_from."&count=".$count."'>Prev Page</a></td>";
 echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$from."&count=".$count."'>Next Page</a></td>";
 //echo "<input type='submit' style='position: absolute; left: -9999px'/></td>";
-echo "<td align=center colspan=12><input type=button style='width: 150px' onClick=window.open('new.php','aaa','width=500,height=700,toolbar=1,status=1,'); value='追加'></td></tr>";
+echo "<td align=center colspan=12><input type=button style='width: 150px' onClick=window.open('new.php','_self','width=500,height=700,toolbar=1,status=1,'); value='追加'></td></tr>";
 echo "</table>";
 echo "<table>";
 echo "<td align=right style='font-size: 10px;'>";

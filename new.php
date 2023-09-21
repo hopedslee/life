@@ -2,14 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert Record</title>
+<title>New Record</title>
 <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <style>
 body { text-align:left; }
 form { margin:0; padding:0; }
-.event_box { width:450px; height:550px; padding:10px; margin: 0; text-align:left; border:3px solid #4d7087; }
+.event_box { width:450px; height:550px; padding:10px; margin: 0; text-align:left; border:3px solid #4d7087; 
 .event_box > div { clear:left; }
 .event_box div div.label { float:left; width:10%; margin:0 auto; } /* 항목 이름*/
 .event_box div div.input { float:both; width:100%; margin:0 auto; } /* 입력 값 */
@@ -41,7 +41,7 @@ echo "<h1>".$pageName."</h1>";
 ?>
 
 <div class="event_box">
-	<form name="insert" action="insert.php" method="post" enctype='multipart/form-data' accept-charset='UTF-8'>
+	<form target="_blank" name="insert" action="insert.php" method="post" enctype='multipart/form-data' accept-charset='UTF-8'>
 		<div>
 			<div class="label">date</div>
 			<div class="input"><input type="date" name="date" value="<?php echo date('Y-m-d'); ?>"</div>
@@ -51,9 +51,9 @@ echo "<h1>".$pageName."</h1>";
 			<div class="label">type</div>
 			<div class="input">
 				<select name="type">
+					<option value="TODO">TODO</option>
 					<option value="DIARY">DIARY</option>
 					<option value="독서">독서</option>
-					<option value="TODO">TODO</option>
 					<option value="가족">가족</option>
 					<option value="운동">운동</option>
 					<option value="운동">산행</option>
@@ -117,7 +117,8 @@ echo "<h1>".$pageName."</h1>";
 			<input type='file' name='file' id='file'><br>
 		</form>
 -->
-		<div class="btnbox"><input type="submit" value="submit" onclick="return val();"></div>
+		<!-- <div class="btnbox"><input type="submit" value="submit" onclick="return val();"></div>a -->
+		<div class="btnbox"><input type="submit" value="submit" onclick="self.close();"></div>
 	 </form>
 </div>
 

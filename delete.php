@@ -36,7 +36,5 @@ if($result == True) {
 	header("$head");
 }
 
-//header("Location: myevents.php"); 
-
 ?>
 </html>

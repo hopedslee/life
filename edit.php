@@ -84,9 +84,10 @@ $ext = pathinfo($path, PATHINFO_EXTENSION);
 			<div class="input">
 			    <select name="type">
 					<option value="" disabled selected>Select a type</option>
+					<option value="TODO" <?php if($type == "TODO") echo "selected='selected'"; ?>>TODO</option>
+					<option value="DIARY" <?php if($type == "DIARY") echo "selected='selected'"; ?>>DIARY</option>
 					<option value="독서" <?php if($type == "독서") echo "selected='selected'"; ?>>독서</option>
 					<option value="운동" <?php if($type == "운동") echo "selected='selected'"; ?>>운동</option>
-					<option value="DIARY" <?php if($type == "DIARY") echo "selected='selected'"; ?>>DIARY</option>
 					<option value="가족" <?php if($type == "가족") echo "selected='selected'"; ?>>가족</option>
 					<option value="산행" <?php if($type == "산행") echo "selected='selected'"; ?>>산행</option>
 					<option value="굴다리회" <?php if($type == "굴다리회") echo "selected='selected'"; ?>>굴다리회</option>
