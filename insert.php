@@ -21,17 +21,32 @@ VALUES ('$date','$type','$contents','$paymethod','$price','$volume','$remark','$
 $result = mysqli_query($conn,$query);
 echo $query . "<br />";
 echo "Return : " . $result ."<br />";
+if($result){
+	echo '<script language="javascript">';
+	echo 'alert("Successful!")';
+	echo '</script>';
+	$from = 0;
+	$count = 120;
+  $divert="?from=".$from."&count=".$count;
+  $head="Location: myevents.php".$divert;
+  header("$head");
+	echo "<script>window.close();</script>";
+}
+else {
+	echo '<script language="javascript">';
+	echo 'alert("Problem with database or something!")';
+	echo '</script>';           
+}
+
+/*
 if ($result == True) {  
 	$from = 0;
 	$count = 120;
   $divert="?from=".$from."&count=".$count;
-  //echo $divert;
   $head="Location: myevents.php".$divert;
-  //echo $head."<br />";
-  header("$head");
 	exit;
 }
-
+*/
 ?>
 <br />
 <input align="center" type=button onClick="self.close();" value="Close this window">

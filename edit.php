@@ -27,32 +27,15 @@ $seqno=$_GET['seqno'];
 
 require ('db.php');
 
-if (!empty($_POST["date"])) $date=$_POST["date"];
-else $date=date("Y-m-d");
-
-if (!empty($_POST["type"])) $type=$_POST["type"];
-else $type="DIARY";
-
-if (!empty($_POST["contents"])) $contents=$_POST["contents"];
-else $contents="";
-
-if (!empty($_POST["paymethod"])) $paymethod=$_POST["paymethod"];
-else $paymethod=NULL;
-
-if (!empty($_POST["price"])) $price=$_POST["price"];
-else $price=0;
-
-if (!empty($_POST["volume"])) $volume=$_POST["volume"];
-else $volume=0;
-
-if (!empty($_POST["remark"])) $remark=$_POST["remark"];
-else $remark=NULL;
-
-if (!empty($_POST["market"])) $market=$_POST["market"];
-else $market=NULL;
-
-if (!empty($_POST["file"])) $file=$_POST["file"];
-else $file=NULL;
+if (!empty($_POST["date"])) $date=$_POST["date"]; else $date=date("Y-m-d");
+if (!empty($_POST["type"])) $type=$_POST["type"]; else $type="DIARY";
+if (!empty($_POST["contents"])) $contents=$_POST["contents"]; else $contents="";
+if (!empty($_POST["paymethod"])) $paymethod=$_POST["paymethod"]; else $paymethod=NULL;
+if (!empty($_POST["price"])) $price=$_POST["price"]; else $price=0;
+if (!empty($_POST["volume"])) $volume=$_POST["volume"]; else $volume=0;
+if (!empty($_POST["remark"])) $remark=$_POST["remark"]; else $remark=NULL;
+if (!empty($_POST["market"])) $market=$_POST["market"]; else $market=NULL;
+if (!empty($_POST["file"])) $file=$_POST["file"]; else $file=NULL;
 
 $query="SELECT * FROM myevents WHERE seqno=$seqno";
 $ret=mysqli_query($conn,$query);
@@ -105,7 +88,7 @@ $ext = pathinfo($path, PATHINFO_EXTENSION);
 
 		<div>
 			<div class="label">contents</div>
-			<textarea id="contents" name="contents" rows="5" cols="50"><?php echo $contents; ?></textarea>			
+			<textarea id="contents" name="contents" rows="15" cols="50"><?php echo $contents; ?></textarea>			
 		</div>
 		
 		<div>

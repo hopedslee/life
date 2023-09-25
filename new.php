@@ -13,7 +13,7 @@ form { margin:0; padding:0; }
 .event_box > div { clear:left; }
 .event_box div div.label { float:left; width:10%; margin:0 auto; } /* 항목 이름*/
 .event_box div div.input { float:both; width:100%; margin:0 auto; } /* 입력 값 */
-.event_box div contents { float:left; width:40%; margin:0 auto; } /* contents 입력 값 */
+.event_box div contents { float:left; width:50%; height:80% margin:0 auto; } /* contents 입력 값 */
 .event_box .btnbox { clear:both; padding:30px; text-align:left; } /* 버튼 */
 </style>
 
@@ -51,8 +51,8 @@ echo "<h1>".$pageName."</h1>";
 			<div class="label">type</div>
 			<div class="input">
 				<select name="type">
-					<option value="TODO">TODO</option>
 					<option value="DIARY">DIARY</option>
+					<option value="TODO">TODO</option>
 					<option value="독서">독서</option>
 					<option value="가족">가족</option>
 					<option value="운동">운동</option>
@@ -71,7 +71,7 @@ echo "<h1>".$pageName."</h1>";
 
 		<div>
 			<div class="label">contents</div>
-			<textarea id="contents" name="contents" rows="5" cols="50" class="input" WRAP></textarea>			
+			<textarea id="contents" name="contents" rows="15" cols="50" class="input" WRAP></textarea>			
 		</div>
 		
 		<div>
@@ -117,21 +117,28 @@ echo "<h1>".$pageName."</h1>";
 			<input type='file' name='file' id='file'><br>
 		</form>
 -->
-		<!-- <div class="btnbox"><input type="submit" value="submit" onclick="return val();"></div>a -->
-		<div class="btnbox"><input type="submit" value="submit" onclick="self.close();"></div>
+		<div class="btnbox"><input type="submit" value="submit" onclick="self.close(); return insert();"></div> 
+		<!-- <div class="btnbox"><input type="submit" value="submit" onclick="self.close();"></div> -->
 	 </form>
 </div>
 
 
 <script>
-function val()
+function close_window(){
+    close();
+}
+
+function insert()
 {
 	if(document.getElementById("contents").value==null || document.getElementById("contents").value=="") {
 		alert("blank text area")
 		return false;
 	}
-	else 
+	else {
+		close();
 		return true;
+	}
+	close();
 } 
 </script>
 </body>

@@ -183,7 +183,7 @@ while( $row = mysqli_fetch_array($result) )
         echo "<td><input type=button onClick=window.open('file_upload.php?seqno=".$seqno."','aaa','width=500,height=200,left=150,top=200,toolbar=0,status=0,'); value='F'></td>";
         //echo "<td><input type=button onClick=window.open('file_upload.php?seqno=".$seqno."&contents=".$row['contents']."','aaa','width=1500,height=1000,left=150,top=200,toolbar=0,status=0,'); value='F'></td>";
     }
-    echo "<td><input type=button onClick=window.open('edit.php?seqno=".$seqno."','aaa','width=500,height=1200,left=150,top=200,toolbar=0,status=0,'); value='Edit'></td>";
+    echo "<td><input type=button onClick=window.open('edit.php?seqno=".$seqno."','_self','width=500,height=1200,left=150,top=200,toolbar=0,status=0,'); value='Edit'></td>";
 
     echo "<td align=left style='font-size: 10px;'>-</td>";
 
