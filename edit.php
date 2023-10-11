@@ -98,12 +98,12 @@ $ext = pathinfo($path, PATHINFO_EXTENSION);
 					<option value="" disabled selected>Select a type</option>
 					<option value="현대카드" <?php if($paymethod == "현대카드") echo "selected='selected'" ?>>현대카드</option>
 					<option value="카뱅" <?php if($paymethod == "카뱅") echo "selected='selected'" ?>>카뱅</option>
-					<option value="카뱅체크" <?php if($paymethod == "카뱅체크") echo "selected='selected'" ?>>카뱅체크</option>
+					<option value="삼성카드" <?php if($paymethod == "삼성카드") echo "selected='selected'" ?>>삼성카드</option>
 					<option value="카카오페이" <?php if($paymethod == "카카오페이") echo "selected='selected'" ?>>카카오페이</option>
 					<option value="농협(법인)" <?php if($paymethod == "농협(법인)") echo "selected='selected'" ?>>농협(법인)</option>
 					<option value="우체국" <?php if($paymethod == "우체국") echo "selected='selected'" ?>>우체국</option>
 					<option value="현금" <?php if($paymethod == "현금") echo "selected='selected'" ?>>현금</option>
-					<option value="양평통보" <?php if($paymethod == "양평통보") echo "selected='selected'" ?>>양평통보</option>
+					<option value="지역화폐" <?php if($paymethod == "지역화폐") echo "selected='selected'" ?>>지역화폐</option>
 			  </select>		
 			</div>
 		</div>
@@ -132,8 +132,9 @@ $ext = pathinfo($path, PATHINFO_EXTENSION);
 			<div class="label">file</div>
 			<div class="input"><input type="text" name="filename" value="<?php echo $row['filename'];?>"></div>
 		</div>
-			
-		<div class="btnbox"><input type="submit" value="save"></div>
+	
+		<input type="submit" value="save" onclick="closeWindow();">
+		<!-- <div class="btnbox"><input type="submit" value="save" onClick="closeWindow();"></div> -->
 	 </form>
 </div> <!-- endof myevents_box -->
 

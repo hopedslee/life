@@ -21,7 +21,8 @@ $query = "UPDATE myevents SET date='$date', type='$type', contents='$contents', 
 $result = mysqli_query($conn,$query);
 echo $query . "<br />";
 echo "Return : " . $result ."<br />";
-if ($result == True) {
+/*
+	 if ($result == True) {
   $from = 0;
   $count = 120;
   $divert="?from=".$from."&count=".$count;
@@ -29,9 +30,9 @@ if ($result == True) {
   $head="Location: myevents.php".$divert;
   //echo $head."<br />";
   header("$head");
-  exit;
+  //exit;
 }
-
+*/
 
 /*
 if ($result == True) {
@@ -41,5 +42,12 @@ if ($result == True) {
 else echo "False";
 */
 ?>
-<input type="button" align=center onClick="self.close();" value="Close this window">
+<input type="button" align=center onClick="closeBtn();" value="Close this window">
+
+<script>
+var closeBtn = document.querySelector("#test input");
+closeBtn.addEventListener("click", ()=>{
+    window.close()
+})
+</script>
 </html> 

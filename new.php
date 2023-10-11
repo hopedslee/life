@@ -81,7 +81,7 @@ echo "<h1>".$pageName."</h1>";
 					<option selected value="">-</option>
 					<option value="현대카드">현대카드</option>
 					<option value="카뱅">카뱅</option>
-					<option value="카뱅체크(개인)">카뱅체크</option>
+					<option value="현대카드">삼성카드</option>
 					<option value="카카오페이">카카오페이</option>
 					<option value="농협(법인)">농협(법인)</option>
 					<option value="농협체크(법인)">농협체크(법인)</option>
