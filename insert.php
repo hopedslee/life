@@ -16,7 +16,7 @@ if (!empty($_POST["file"])) $file=$_POST["file"]; else $file=NULL;
 
 //-- 추가하기
 $contents = addslashes($contents);
-$query = "INSERT INTO myevents (date,type,contents,paymethod,price,volume,remark,market) 
+$query = "INSERT INTO myevents (edate,etype,contents,paymethod,price,volume,remark,market) 
 VALUES ('$date','$type','$contents','$paymethod','$price','$volume','$remark','$market')";
 $result = mysqli_query($conn,$query);
 echo $query . "<br />";

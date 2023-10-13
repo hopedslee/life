@@ -41,7 +41,7 @@ $query="SELECT * FROM myevents WHERE seqno=$seqno";
 $ret=mysqli_query($conn,$query);
 $row=mysqli_fetch_array($ret);
 $contents = $row['contents'];
-$type=$row['type'];
+$type=$row['etype'];
 $paymethod=$row['paymethod'];
 $path = "files/" . $row['filename'];
 $ext = pathinfo($path, PATHINFO_EXTENSION);
@@ -58,12 +58,12 @@ $ext = pathinfo($path, PATHINFO_EXTENSION);
 		</div>
 		
 		<div>
-			<div class="label">Date</div>
-			<div class="input"><input type="date" name="date" value="<?php echo $row['date'];?>"></div>
+			<div class="label">edate</div>
+			<div class="input"><input type="date" name="date" value="<?php echo $row['edate'];?>"></div>
 		</div>
 		
 		<div>
-			<div class="label">type</div>
+			<div class="label">etype</div>
 			<div class="input">
 			    <select name="type">
 					<option value="" disabled selected>Select a type</option>

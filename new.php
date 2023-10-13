@@ -43,12 +43,12 @@ echo "<h1>".$pageName."</h1>";
 <div class="event_box">
 	<form target="_blank" name="insert" action="insert.php" method="post" enctype='multipart/form-data' accept-charset='UTF-8'>
 		<div>
-			<div class="label">date</div>
+			<div class="label">edate</div>
 			<div class="input"><input type="date" name="date" value="<?php echo date('Y-m-d'); ?>"</div>
 		</div>
 
 		<div>
-			<div class="label">type</div>
+			<div class="label">etype</div>
 			<div class="input">
 				<select name="type">
 					<option value="DIARY">DIARY</option>
