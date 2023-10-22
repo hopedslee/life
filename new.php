@@ -70,7 +70,7 @@ echo "<h1>".$pageName."</h1>";
 		</div>
 
 		<div>
-			<div class="label">contents</div>
+			<div class="label">contents (max 8192)</div>
 			<textarea id="contents" name="contents" rows="15" cols="50" class="input" WRAP></textarea>			
 		</div>
 		

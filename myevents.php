@@ -78,12 +78,14 @@ echo "<table border='2'>";
 echo "<tr><td align=right style='font-size: 10px;'><a href='myevents.php?from=0&count=500'>Top Page</a></td>";
 echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$prev_from."&count=".$count."'>Prev Page</a></td>";
 echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$from."&count=".$count."'>Next Page</a></td>";
+echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=0&count=5000'>Last Page</a></td>";
 echo "<td align=center colspan=6><input type=button style='width: 50px' onClick=window.open('new.php','_blank','width=500,height=900,toolbar=1,status=1,'); value='Add'></td></tr>";
 echo "<colgroup>";
 echo "<col style='width:1%;'>";
 echo "<col style='width:1%;'>";
 echo "<col style='width:1%;'>";
 echo "<col style='width:1%;'>";
+echo "<col style='width:1%;'>"; //경과년
 echo "<col style='width:1%;'>";
 echo "<col style='width:2%;'>";
 echo "<col style='width:40%;'>";
@@ -102,6 +104,7 @@ echo "</colgroup>";
 echo "<tr style='color: gray;'>";
 echo "<th align='center' strong style='font-size: 5px;'>NO</th>";
 echo "<th align='center' strong style='font-size: 5px;'>일자</th>";
+echo "<th align='center' strong style='font-size: 5px;'>경과년</th>";
 echo "<th align='center' strong style='font-size: 5px;'>경과일</th>";
 echo "<th align='center' strong style='font-size: 5px;'>구분</th>";
 echo "<th align='center' strong style='font-size: 10px;'>del</th>";
@@ -153,8 +156,10 @@ while( $row = mysqli_fetch_array($result) )
         else echo "<td align='center' strong  style='background-color:green; font-size: 10px;'><b>".$span->days."</b></td>";
     } else {
         //$ddd = $span->days;
-        echo "<td align='center' style='font-size: 10px;'>+".$span->days."</td>";
+        echo "<td align='center' style='font-size: 10px;'>+".intval($span->days/365)."</td>";
     }
+
+    echo "<td align='center' style='font-size: 10px;'>+".$span->days."</td>";
     echo "<td align='center' style='width:0%; font-size: 5px;'>".$row['etype']."</td>";
 
     $no += 1;
@@ -163,15 +168,17 @@ while( $row = mysqli_fetch_array($result) )
     //echo "<td align=char style='font-size: 20px;'>".$row['contents']."</td>";
     // contents
 		if ($keywordsearch == 1) {
+			$clength = "[".mb_strlen($row['contents'])."]";
 			$conts =  htmlspecialchars ( $row['contents'] );
 			$text = highlightWord( $conts, $keyword );
-    	echo "<td align=char>".$text."</td>";
+    	echo "<td align=char>".$text."<br>".$clength."</td>";
 		}
 		else { 
 			//$text = htmlspecialchars ( $row['contents'] );
+			$clength = "[".mb_strlen($row['contents'])."]";
 			$text = $row['contents'];
     	//echo "<td align=char>" . $row['contents'] ."</td>";
-    	echo "<td align=char>" . $text ."</td>";
+    	echo "<td align=char>".$text."<br>".$clength."</td>";
 		}
 
     echo "<td align=left style='width:2%; font-size: 10px;'>".$row['paymethod']."</td>";
@@ -202,11 +209,11 @@ while( $row = mysqli_fetch_array($result) )
 }
 $from = $from + $count;
 $prev_from = $from - ($count*2);
-//echo "<tr><td align=right style='font-size: 10px;'><a href='myevents.php?from=0&count=120'>Top Page</a></td>";
-echo "<tr><td></td>";
-//echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$prev_from."&count=".$count."'>Prev Page</a></td>";
+echo "<tr><td align=right style='font-size: 10px;'><a href='myevents.php?from=0&count=120'>Top Page</a></td>";
+echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$prev_from."&count=".$count."'>Prev Page</a></td>";
 echo "<td></td>";
 echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$from."&count=".$count."'>Next Page</a></td>";
+echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=0&count=5000'>Last Page</a></td>";
 echo "<td></td>"; //echo "<input type='submit' style='position: absolute; left: -9999px'/></td>";
 echo "<td align=center colspan=12><input type=button style='width: 150px' onClick=window.open('new.php','_blank','width=500,height=900,toolbar=1,status=1,'); value='Add'></td></tr>";
 echo "</table>";
