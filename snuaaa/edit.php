@@ -37,7 +37,7 @@ if (!empty($_POST["remark"])) $remark=$_POST["remark"]; else $remark=NULL;
 if (!empty($_POST["market"])) $market=$_POST["market"]; else $market=NULL;
 if (!empty($_POST["file"])) $file=$_POST["file"]; else $file=NULL;
 
-$query="SELECT * FROM myevents WHERE seqno=$seqno";
+$query="SELECT * FROM mlog WHERE seqno=$seqno";
 $ret=mysqli_query($conn,$query);
 $row=mysqli_fetch_array($ret);
 $contents = $row['contents'];
@@ -136,7 +136,7 @@ $ext = pathinfo($path, PATHINFO_EXTENSION);
 		<input type="submit" value="save" onclick="closeWindow();">
 		<!-- <div class="btnbox"><input type="submit" value="save" onClick="closeWindow();"></div> -->
 	 </form>
-</div> <!-- endof myevents_box -->
+</div> <!-- endof mlog_box -->
 
 <script>
 function senddata(f){

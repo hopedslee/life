@@ -51,12 +51,12 @@ echo "<h1>".$pageName."</h1>";
 			<div class="label">etype</div>
 			<div class="input">
 				<select name="type">
+					<option value="운동">산행</option>
 					<option value="DIARY">DIARY</option>
 					<option value="TODO">TODO</option>
 					<option value="독서">독서</option>
 					<option value="가족">가족</option>
 					<option value="운동">운동</option>
-					<option value="운동">산행</option>
 					<option value="CFD">CFD</option>
 					<option value="굴대리회">굴다리회</option>
 					<option value="GOODS">GOODS</option>
