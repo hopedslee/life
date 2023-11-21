@@ -6,7 +6,7 @@ $keyword2 = $_POST['keyword2'];
 $edate = $_POST['edate'];
 
 
-$mAgent = array("Windows","Android","iPhone","iPad","Blackberry","Opera Mini","Windows ce","SonyEricsson","webOS","PalmOS","Nokia","Sony");
+$mAgent = array("Android","iPhone","iPad","Blackberry","Opera Mini","Windows ce","SonyEricsson","webOS","PalmOS","Nokia","Sony","Windows");
 $agent = $_SERVER['HTTP_USER_AGENT'];
 //echo $agent . "<br>";
 $terminal = "";
@@ -17,28 +17,28 @@ for($i=0; $i<sizeof($mAgent); $i++){
 	}
 }
 
-$table = "client_log";
+//$table = "client_log";
 $ip = get_client_ip();
 
 if( $keyword1 == "" )
 {
 	//$query="SELECT * from mlog order by RAND() limit 5";
 	$query1="SELECT * FROM mlog ORDER BY edate DESC, seqno DESC LIMIT 100";
-  $query2 = "INSERT INTO $table (ipaddress, keyword1, keyword2, terminal, agent, connect_time) VALUES ('$ip', '$keyword1', '$keyword2', '$terminal', '$agent', CURRENT_TIMESTAMP)";
+  //$query2 = "INSERT INTO $table (ipaddress, keyword1, keyword2, terminal, agent, connect_time) VALUES ('$ip', '$keyword1', '$keyword2', '$terminal', '$agent', CURRENT_TIMESTAMP)";
 }
 else if ($keyword2 == "")
 {
 	$query1 = "SELECT * FROM mlog WHERE contents LIKE '%" . $keyword1 . "%'  ORDER BY edate DESC, seqno DESC";
-	$query2="INSERT INTO $table (ipaddress,keyword1,keyword2,terminal,agent,connect_time) VALUES ('$ip', '$keyword1', '$keyword2', '$terminal', '$agent', CURRENT_TIMESTAMP)";
+	//$query2="INSERT INTO $table (ipaddress,keyword1,keyword2,terminal,agent,connect_time) VALUES ('$ip', '$keyword1', '$keyword2', '$terminal', '$agent', CURRENT_TIMESTAMP)";
 }
 else if ($keyword2 != "")
 {
 	$query1 = "SELECT * FROM mlog WHERE (contents LIKE '%" . $keyword1 . "%' ) AND (contents LIKE '%" . $keyword2 . "%' ) ORDER BY edate DESC, seqno DESC";
-  $query2 = "INSERT INTO $table (ipaddress,keyword1,keyword2,terminal,agent,connect_time) VALUES ('$ip', '$keyword1', '$keyword2', '$terminal', '$agent', CURRENT_TIMESTAMP)";
+  //$query2 = "INSERT INTO $table (ipaddress,keyword1,keyword2,terminal,agent,connect_time) VALUES ('$ip', '$keyword1', '$keyword2', '$terminal', '$agent', CURRENT_TIMESTAMP)";
 }
 
 $result1=mysqli_query($conn,$query1) or die(mysqli_error());
-$result2=mysqli_query($conn,$query2) or die(mysqli_error());
+//$result2=mysqli_query($conn,$query2) or die(mysqli_error());
 
 $row_cnt = mysqli_num_rows($result1);
 

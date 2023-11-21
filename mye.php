@@ -1,4 +1,3 @@
-
 <?php
 
 function highlightWord( $content, $word ) {
@@ -6,16 +5,6 @@ function highlightWord( $content, $word ) {
     $content = str_replace( $word, $replace, $content ); // replace content
 
     return $content; // return highlighted data
-}
-
-function highlightWord_2($text, $word) {
-    // Use regular expression to ignore case and match the word
-    $pattern = "/\b(" . preg_quote($word) . ")\b/i";
-
-    // Replace the matched word with HTML for highlighting
-    $highlightedText = preg_replace($pattern, '<span style="background-color: ' . '#88ccff' .  ';">$1</span>', $text);
-
-    return $highlightedText;
 }
 
 include ('header.php');
@@ -41,7 +30,7 @@ else {
     $query="SELECT * from myevents order by edate desc, seqno desc limit ".$from.", ".$count;
 }
 
-$result=mysqli_query($conn,$query) or die(mysqli_error());
+//$result=mysqli_query($conn,$query) or die(mysqli_error());
 
 $prev_from = $from - ($count*2);
 
@@ -60,32 +49,29 @@ echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=".$fro
 echo "<td align=right style='font-size: 10px;'><a href='myevents.php?from=0&count=5000'>Last Page</a></td>";
 echo "<td align=center colspan=6><input type=button style='width: 50px' onClick=window.open('new.php','_blank','width=500,height=900,toolbar=1,status=1,'); value='Add'></td></tr>";
 echo "<colgroup>";
-echo "<col style='width:1%;'>";
-echo "<col style='width:1%;'>";
-echo "<col style='width:1%;'>";
-echo "<col style='width:1%;'>";
-echo "<col style='width:1%;'>"; //경과년
-echo "<col style='width:1%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:40%;'>";
-echo "<col style='width:1%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
-echo "<col style='width:2%;'>";
+echo "<col style='width:1%;'>"; // NO
+echo "<col style='width:10%;'>"; // date
+echo "<col style='width:10%;'>"; //경과일월년
+echo "<col style='width:5%;'>"; // type
+echo "<col style='width:5%;'>"; // del
+echo "<col style='width:5%;'>"; // SN 
+echo "<col style='width:40%;'>"; // contents
+echo "<col style='width:2%;'>"; // paymethod
+echo "<col style='width:2%;'>"; // price
+echo "<col style='width:2%;'>"; // vol
+echo "<col style='width:2%;'>"; // unit price
+echo "<col style='width:2%;'>"; // remark
+echo "<col style='width:2%;'>"; // market
+echo "<col style='width:2%;'>"; // file
+echo "<col style='width:2%;'>"; // edit
+echo "<col style='width:2%;'>"; // end
 echo "</colgroup>";
 
 echo "<tr style='color: gray;'>";
-echo "<th align='center' strong style='font-size: 5px;'>NO</th>";
-echo "<th align='center' strong style='font-size: 5px;'>일자</th>";
-echo "<th align='center' strong style='font-size: 5px;'>경과년</th>";
-echo "<th align='center' strong style='font-size: 5px;'>경과일</th>";
-echo "<th align='center' strong style='font-size: 5px;'>구분</th>";
+echo "<th align='center' strong style='font-size: 10px;'>NO</th>";
+echo "<th align='center' strong style='font-size: 10px;'>일자</th>";
+echo "<th align='center' strong style='font-size: 10px;'>경과일</th>";
+echo "<th align='center' strong style='font-size: 10px;'>구분</th>";
 echo "<th align='center' strong style='font-size: 10px;'>del</th>";
 echo "<th align='center' strong style='font-size: 10px;'>SN</th>";
 echo "<th align='center' strong style='font-size: 10px;'>내용</th>";
@@ -99,17 +85,22 @@ echo "<th align='center' strong style='font-size: 10px;'>파일</th>";
 echo "<th align='center' strong style='font-size: 10px;'>EDIT</th>";
 echo "<th align='center' strong style='font-size: 10px;'>END</th>";
 echo "</tr>";
+
 $no=$from;
 $today = new DateTime(date("Y-m-d"));
 
-while( $row = mysqli_fetch_array($result) )
+$no = 0;
+$today = date('Y-m-d');
+$targetDate = date('Y-m-d',strtotime('-560 month', strtotime($today)));
+$currentDate = $today;
+
+while ($currentDate >= $targetDate) 
 {
-    $seqno=$row['seqno'];
-    $contents=$row['contents'];
-		$no = $no + 1;
-    echo "<tr style='color: gray'><td align='center' style='font-size: 9px;'>".$no."</td>";
-    $edate = $row['edate'];
-    $weekday = date("N", strtotime($edate));
+		$query="SELECT * FROM myevents WHERE edate='" . $currentDate . "'";
+		$result=mysqli_query($conn,$query) or die(mysqli_error());
+		$rowCount = mysqli_num_rows($result); 
+    
+		$weekday = date("N", strtotime($currentDate));
     switch($weekday)
     {
         case 1: $dname=" (Mon)"; break;
@@ -121,27 +112,60 @@ while( $row = mysqli_fetch_array($result) )
         case 7: $dname=" (Sun)"; break;
         default: break;
     }
-    //if($weekday > 5) echo "<th align='center' style='width: 5%; font-size: 10px; color: red'>".substr($row['edate'],-10,10).$dname."</th>";
-		$s = trim(substr($row['edate'],-10,10)).trim($dname);
+
+		$date1 = date_create($currentDate);
+		$date2 = date_create($today);
+		$diff = date_diff($date1, $date2);
+		$years = $diff->format("%y");
+		$months = $diff->format("%m");
+		$days = $diff->format("%d");
+
+		if ($years > 0 || $months > 0) {
+    		$span = ($years > 0 ? $years . " year" . ($years > 1 ? "s" : "") : "") . " " .
+              ($months > 0 ? $months . " month" . ($months > 1 ? "s" : "") : "") . " " .
+              ($days > 0 ? $days . " day" . ($days > 1 ? "s" : "") : "");
+		} else {
+    		$span = $days . " day" . ($days > 1 ? "s" : "");
+		}
+
+		if($rowCount < 1)
+		{
+    	echo "<tr style='color: gray'><td align='center' style='font-size: 9px;'>-</td>";
+			$s = trim(substr($currentDate,-10,10)).trim($dname);
+    	if($weekday > 5) echo "<td align='center' style='width:5%; font-size: 10px; color:red;'>".$s."</th>";
+    	else echo "<td align='center' style='width:5%; font-size:10px;'>".substr($currentDate,-10,10).$dname."</td>";
+    	if($currentDate > $today) {
+        echo "<td align='center' strong  style='background-color:yellow; font-size: 10px;'>".$span."</td>";
+    	} else if($currentDate == $today) {
+        echo "<td align='center' strong  style='background-color:green; font-size: 10px;'>".$span."</td>";
+    	} else {
+        echo "<td align='center' style='font-size: 10px;'>".$span."</td>";
+    	}
+			echo "<td></td><td></td><td></td><td></td><td></td></td>";
+			echo "<td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
+		}
+		else // $rowCount>0
+		{
+		while( $row = mysqli_fetch_array($result) )
+		{		
+    $seqno=$row['seqno'];
+    $contents=$row['contents'];
+		$no++;
+    echo "<tr style='color: gray'><td align='center' style='font-size: 9px;'>".$no."</td>";
+		$s = trim(substr($currentDate,-10,10)).trim($dname);
     if($weekday > 5) echo "<td align='center' style='width:5%; font-size: 10px; color:red;'>".$s."</th>";
-    else echo "<td align='center' style='width:5%; font-size:10px;'>".substr($row['edate'],-10,10).$dname."</td>";
-    $event = new DateTime($row['edate']);
-    $span  = date_diff($event, $today);
-    if($event > $today) {
-        //$diff = (-1) * $span->days;
-        echo "<td align='center' strong  style='background-color:yellow; font-size: 10px;'><b>".$span->days*(-1)."</b></td>";
-    } else if($event == $today) {
-        if($row['etype']=="APPO") echo "<td align='center' strong  style='background-color:red; font-size: 10px;'><b>".$span->days."</b></td>";
-        else echo "<td align='center' strong  style='background-color:green; font-size: 10px;'><b>".$span->days."</b></td>";
+    else echo "<td align='center' style='width:5%; font-size:10px;'>".substr($currentDate,-10,10).$dname."</td>";
+   
+    if($currentDate > $today) {
+        echo "<td align='center' strong  style='background-color:yellow; font-size: 10px;'>".$span."</td>";
+    } else if($currentDate == $today) {
+        echo "<td align='center' strong  style='background-color:green; font-size: 10px;'>".$span."</td>";
     } else {
-        //$ddd = $span->days;
-        echo "<td align='center' style='font-size: 10px;'>+".intval($span->days/365)."</td>";
+        echo "<td align='center' style='font-size: 10px;'>".$span."</td>";
     }
 
-    echo "<td align='center' style='font-size: 10px;'>+".$span->days."</td>";
-    echo "<td align='center' style='width:0%; font-size: 5px;'>".$row['etype']."</td>";
+    echo "<td align='center' style='width:0%; font-size: 10px;'>".$row['etype']."</td>";
 
-    $no++;
     echo "<td align='center'><a onClick=\"javascript: return confirm('Delete [".$seqno."] ".iconv_substr($contents,0,10,"utf-8")." ?');\" href='delete.php?seqno=".$seqno."&from=".$from."&count=".$count."'>x</a></td>"; //use double quotes for js inside php!
     echo "<td align='center' style='font-size: 10px;'>".$row['seqno']."</td>";
     //echo "<td align=char style='font-size: 20px;'>".$row['contents']."</td>";
@@ -185,10 +209,12 @@ while( $row = mysqli_fetch_array($result) )
         //echo "<td><input type=button onClick=window.open('file_upload.php?seqno=".$seqno."&contents=".$row['contents']."','aaa','width=1500,height=1000,left=150,top=200,toolbar=0,status=0,'); value='F'></td>";
     }
     echo "<td><input type=button onClick=window.open('edit.php?seqno=".$seqno."','_blank','width=500,height=1200,left=150,top=200,toolbar=1,status=1,'); value='Edit'></td>";
-
     echo "<td align=left style='font-size: 10px;'>-</td>";
-
     echo "</tr>";
+		} // while	
+		} // if else
+		$currentDate = date('Y-m-d', strtotime('-1 day', strtotime($currentDate)));
+
 }
 $from = $from + $count;
 $prev_from = $from - ($count*2);
