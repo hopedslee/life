@@ -59,7 +59,7 @@ echo "<h1>".$pageName."</h1>";
 					<option value="TODO">TODO</option>
 					<option value="독서">독서</option>
 					<option value="가족">가족</option>
-					<option value="운동">과음</option>
+					<option value="과음">과음</option>
 					<option value="CFD">CFD</option>
 					<option value="굴대리회">굴다리회</option>
 					<option value="APPO">APPO</option>

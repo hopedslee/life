@@ -1,6 +1,6 @@
 
 <?php
-
+/* 2024-01-31 */
 function highlightWord( $content, $word ) {
     $replace = "<span style='background-color: #88ccff;'>" . $word . "</span>"; // create replacement
     $content = str_replace( $word, $replace, $content ); // replace content
@@ -127,6 +127,7 @@ while( $row = mysqli_fetch_array($result) )
     else echo "<td align='center' style='width:5%; font-size:10px;'>".substr($row['edate'],-10,10).$dname."</td>";
     $event = new DateTime($row['edate']);
     $span  = date_diff($event, $today);
+    echo "<td align='center' style='font-size: 10px;'>+".intval($span->days/365)."</td>";
     if($event > $today) {
         //$diff = (-1) * $span->days;
         echo "<td align='center' strong  style='background-color:yellow; font-size: 10px;'><b>".$span->days*(-1)."</b></td>";
@@ -138,7 +139,7 @@ while( $row = mysqli_fetch_array($result) )
         echo "<td align='center' style='font-size: 10px;'>+".intval($span->days/365)."</td>";
     }
 
-    echo "<td align='center' style='font-size: 10px;'>+".$span->days."</td>";
+    //echo "<td align='center' style='font-size: 10px;'>+".$span->days."</td>";
     echo "<td align='center' style='width:0%; font-size: 5px;'>".$row['etype']."</td>";
 
     $no++;
