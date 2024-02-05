@@ -1,5 +1,6 @@
 <html>
 <?php
+// modifed 2024-02-05
 require('dbconn.php');
 $seqno=$_GET['seqno'];
 
